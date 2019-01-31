@@ -36,6 +36,7 @@ namespace AncubePlattformApp.API
         {
             services.AddDbContext<DataContext>(x=> x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +55,8 @@ namespace AncubePlattformApp.API
 
             // app.UseHttpsRedirection();
 
+            // the chronological order matters
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             // MVC = Middleware: routes request to the correct controller
             app.UseMvc();
         }

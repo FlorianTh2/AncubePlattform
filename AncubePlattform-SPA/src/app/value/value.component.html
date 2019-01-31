@@ -1,3 +1,7 @@
-<p>
-  value works!
+<!-- 
+  - *ngFor structive directives in angular
+  - they start always with *
+-->
+<p *ngFor="let value of values">
+  {{value.id}}, {{value.name}}
 </p>
