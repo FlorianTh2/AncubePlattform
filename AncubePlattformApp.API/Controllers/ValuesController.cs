@@ -30,6 +30,7 @@ namespace AncubePlattformApp.API.Controllers
         // How? Combination of async,Task<> and await
 
 
+
         // GET api/values
         // // IActionResult allows HTTP-responses like ok
         public async Task<IActionResult> GetValues()
