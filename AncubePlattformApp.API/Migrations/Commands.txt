@@ -1,0 +1,5 @@
+create migration
+dotnet ef migrations add Name (Name = e.g. InitialCreate)
+
+apply migrations and if not done yet create database
+dotnet ef database update

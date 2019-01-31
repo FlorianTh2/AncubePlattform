@@ -4,6 +4,7 @@ namespace AncubePlattformApp.API.Migrations
 {
     public partial class InitialCreate : Migration
     {
+        // Up keeps the information for CREATE the Table
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -20,6 +21,8 @@ namespace AncubePlattformApp.API.Migrations
                 });
         }
 
+
+        // Down keeps the information for shutdown the table
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
