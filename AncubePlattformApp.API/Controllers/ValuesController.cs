@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AncubePlattformApp.API.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AncubePlattformApp.API.Controllers
 {
@@ -11,18 +13,46 @@ namespace AncubePlattformApp.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly DataContext context;
+
+        public ValuesController(DataContext context)
         {
-            return new string[] { "value1", "value2" };
+            this.context = context;
         }
+
+        // 1 Request == 1 Action == 1 Thread aus ThreadPool
+        //      es existieren 2 versch. Thread 1. WorkerThreads 2. IOCP-Threads
+        // synchronous: 1 thread / action does i/0 blocking (aka waiting for other-programms / 
+        //      os-files / db or similar) -> thread will wait till result is present
+        // asynchronous: 1 thread / action does i/0 blocking (aka waiting for other-programms / 
+        //      os-files / db or similar) -> thread is released and (another) thread
+        //      continues the work, if the result is present
+        // How? Combination of async,Task<> and await
+
+
+        // GET api/values
+        // // IActionResult allows HTTP-responses like ok
+        public async Task<IActionResult> GetValues()
+        {
+            var values = await context.Values.ToListAsync();
+            return Ok(values);
+        }
+
+        // Synchronous-version
+        
+        // public IActionResult GetValues()
+        // {
+        //     var values = context.Values.ToList();
+        //     return Ok(values);
+        // }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public async Task<IActionResult> GetValue(int id)
         {
-            return "value" + id;
+            // FirstOrDefault returnes default (and no Exception like in first) if no value got found
+            var value = await context.Values.FirstOrDefaultAsync(x=>x.Id==id);
+            return Ok(value);
         }
 
         // POST api/values
