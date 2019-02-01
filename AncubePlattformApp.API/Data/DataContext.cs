@@ -13,5 +13,7 @@ namespace AncubePlattformApp.API.Data
 
         // Name of Prop == Name of Table
         public DbSet<Value> Values { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }
