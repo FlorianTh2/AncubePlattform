@@ -1,0 +1,12 @@
+﻿Entity Framework:
+
+// create migration file
+dotnet ef migrations add <name of migration>
+add-migration AddBookToDb					// package manager console
+
+
+
+//apply migration file to database
+dotnet ef database update
+update-database								// package manager console
+
