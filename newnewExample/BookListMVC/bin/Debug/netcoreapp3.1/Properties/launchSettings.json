@@ -1,4 +1,8 @@
-﻿{
+﻿//Defines the launch parameters for the applications
+// - so e.g. all needed environment variables (user defined or system needed)
+// - ...
+
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,

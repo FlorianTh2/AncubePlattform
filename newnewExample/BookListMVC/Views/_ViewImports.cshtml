@@ -1,3 +1,15 @@
-﻿@using BookListMVC
+﻿@*
+    i think its hierarchical -> if u place same named file in the view-folder
+    named after the controller instead of in _Shared or not even in _Shared, this
+    other file in the given postition will override this code here
+*@
+
+
+@* Used to import often used namespaces inside the views *@
+
+
+@using BookListMVC
 @using BookListMVC.Models
+@using BookListMVC.ViewModels.UserController
+@using BookListMVC.Models.User
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

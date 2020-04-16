@@ -1,3 +1,5 @@
+<!--project file-->
+
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>

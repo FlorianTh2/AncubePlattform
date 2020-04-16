@@ -1,0 +1,52 @@
+﻿@*
+    3 ways:
+        - ViewData-Object (good): store object under key e.g. ViewData["key"]
+        - ViewBag-Object (better): wrapper around ViewData with handles keys as dynamicly properties (=better since now its compile time checking and not runtime checking (for wrong spelled keys for example)) e.g. Viewbag.key
+        -strongly Typed View (best, since intellisense in view): = give object in Controller into View (return View(object)), work in View with @Model and define @Model class at beginning of the view-file
+*@
+
+@model UserDetailsViewModel
+
+@{
+    ViewBag.Title = "User Details";
+}
+
+
+@*<h3>@ViewData["PageTitle"]</h3>
+    <br />
+    @{
+        var user = ViewData["User"] as BookListMVC.Models.User.User;
+    }
+    <br />
+    <div>
+        Name: @user.Name
+    </div>
+    <div>
+        Email: @user.Email
+    </div>
+    <div>
+        Department: @user.Department
+    </div>*@
+
+
+@*<h3>@ViewBag.PageTitle</h3>*@
+@*<div>
+        Name: ViewBag.User.Name
+    </div>
+    <div>
+        Email: ViewBag.User.Email
+    </div>
+    <div>
+        Department: ViewBag.User.Department
+    </div>*@
+
+<h3>@Model.PageTitle</h3>
+<div>
+    Name: @Model.User.Name
+</div>
+<div>
+    Email: @Model.User.Email
+</div>
+<div>
+    Department: @Model.User.Department
+</div>

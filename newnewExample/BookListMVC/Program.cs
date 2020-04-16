@@ -11,16 +11,18 @@ namespace BookListMVC
 {
     public class Program
     {
+        // initial this is a console application
+        // after that static method defined below it becomes a web app
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args) // returns IHostBuilder
+                .Build() // builds that host
+                .Run(); // runs that host=now listen to requests
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        //
+        public static IHostBuilder CreateHostBuilder(string[] args) =>  Host.CreateDefaultBuilder(args) // creates Host-builder object
+                                                                            // with defaults
+                                                                            .ConfigureWebHostDefaults(webBuilder => {webBuilder.UseStartup<Startup>();});
     }
 }

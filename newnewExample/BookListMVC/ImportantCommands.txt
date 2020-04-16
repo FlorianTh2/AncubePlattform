@@ -1,5 +1,13 @@
 ﻿Entity Framework:
 
+To work with the "right" cli commands one has to 
+	- open "Developer Powershell for VS2019"
+	- navigate to the right project folder
+
+// run the project
+dotnet run
+
+
 // create migration file
 dotnet ef migrations add <name of migration>
 add-migration AddBookToDb					// package manager console

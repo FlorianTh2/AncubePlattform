@@ -1,9 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@*
+    i think its hierarchical -> if u place same named file in the view-folder 
+    named after the controller instead of in _Shared or not even in _Shared, this
+    other file in the given postition will override this code here
+*@
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BookListMVC</title>
+    <title>@ViewBag.Title - BookListMVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -15,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" />
 
-    
+
 
 
 
@@ -39,6 +46,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Book List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Details">User Details</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User Index</a>
                         </li>
                     </ul>
                 </div>

@@ -1,3 +1,27 @@
-﻿@{
+﻿@*
+    _ViewStart is hierarchical -> if u place same named file in the view-folder
+    named after the controller instead of in _Shared or not even in _Shared, this
+    other file in the given postition will override this code here
+*@
+
+@*
+    Gets copied at the start of every rendered View
+    Useful for something like define the layout name/location
+    -> maybe different layouts for different roles
+*@
+
+@{
     Layout = "_Layout";
+
+    //if(User.IsInRole("Admin"))
+    //{
+    //    Layout = "_AdminLayout";
+    //}
+    //else
+    //{
+    //    Layout = "_NonAdminLayout";
+    //}
+
 }
+
+
