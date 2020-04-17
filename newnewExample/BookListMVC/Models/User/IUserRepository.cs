@@ -9,5 +9,8 @@ namespace BookListMVC.Models.User
     {
         User GetUser(int Id);
         IEnumerable<User> GetAllUsers();
+        User Add(User user);
+        User Update(User userChanges);
+        User Delete(int id);
     }
 }

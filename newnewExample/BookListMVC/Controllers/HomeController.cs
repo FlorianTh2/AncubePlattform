@@ -9,6 +9,7 @@ using BookListMVC.Models;
 
 namespace BookListMVC.Controllers
 {
+    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -18,6 +19,10 @@ namespace BookListMVC.Controllers
             _logger = logger;
         }
 
+        // to set the default route for the whole application
+        [Route("~/")]
+        // to set the default route (/action) for this controller
+        [Route("~/Home")]
         public IActionResult Index()
         {
             return View();

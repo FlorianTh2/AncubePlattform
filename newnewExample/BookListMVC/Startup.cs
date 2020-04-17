@@ -33,14 +33,16 @@ namespace BookListMVC
         // configure services for my application
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             // 3 types: AddSingleton - AddTransient - AddScoped
             // Singleton=1 instance per application start -> whole applicaton livetime
             // Transient=1 instance each time the Interface is requested (the controller ctor requests the interface and this controller and his ctor is requested for each individual http request)
             // Scoped=1 instaqnce for each request within the scope, so if one webrequests has multiple http request to the same object-> this object get reused
             //...<What is required by ctor (what interface), which implemented class to bind on that interface>
-            services.AddSingleton<IUserRepository, MockUserRepository>();
+
+            // here scoped since singleton thows an error, i dont know why
+            services.AddScoped<IUserRepository, SQLUserRepository>();
             // for rest apis
             // services.AddControllers();
             services.AddControllersWithViews();
@@ -144,20 +146,25 @@ namespace BookListMVC
             ////authorizes a user to access secure resources.
             app.UseAuthorization();
 
+
+            // REST APIs should use attribute routing.
+            // since you can be more granular with what is needed and what is not needed
+            // Also you can better use HTTP-Verbs since often with APIs you have multiple
+            // HTTP-Verbs on the same method -> Get, Post...
+            // MapControllers() enables attribute-routing
+            // -> endpoints.MapControllers();
+            // Attribute routing provides fine-grained control to make the ID required for some actions and not for others.
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
+
             app.UseEndpoints(endpoints =>
             {
-                // REST APIs should use attribute routing.
-                // since you can be more granular with what is needed and what is not needed
-                // Also you can better use HTTP-Verbs since often with APIs you have multiple
-                // HTTP-Verbs on the same method -> Get, Post...
-                // MapControllers() enables attribute-routing
-                // -> endpoints.MapControllers();
-                // Attribute routing provides fine-grained control to make the ID required for some actions and not for others.
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
-
 
         }
     }

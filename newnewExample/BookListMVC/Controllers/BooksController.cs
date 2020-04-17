@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace BookListMVC.Controllers
 {
+    [Route("[controller]/[action]")]
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -25,7 +26,7 @@ namespace BookListMVC.Controllers
 
 
 
-
+        [Route("~/Books")]
         public IActionResult Index()
         {
             return View();

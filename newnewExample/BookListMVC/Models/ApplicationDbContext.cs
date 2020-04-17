@@ -11,6 +11,8 @@ namespace BookListMVC.Models
     {
         public DbSet<Book> Books { get; set; }
 
+        public DbSet<User.User> Users { get; set; }
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -21,6 +23,7 @@ namespace BookListMVC.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.SeedBooks();
+            modelBuilder.SeedUsers();
         }
     }
 }

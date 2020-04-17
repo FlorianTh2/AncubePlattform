@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookListMVC.Controllers
 {
+    [Route("[controller]/[action]")]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -18,8 +19,11 @@ namespace BookListMVC.Controllers
         }
 
         // string, int, ...
-        // JsonResult, ViewResult,
-        // IActionResult
+        // JsonResult, ViewResult, RedirectActionResult
+        // IActionResult is an interface which is included in all classes above
+        // specify default route in this controller (below)
+        [Route("~/User")]
+        // ~/ ignores controller route
         public ViewResult Index()
         {
             var viewModel = _userRepository.GetAllUsers();
@@ -28,6 +32,7 @@ namespace BookListMVC.Controllers
 
         // Attribute routing, actually not needed due to our mvc-endpoint routing configured in the startup file
         //[Route("User/Details/{id?}")]
+        [Route("{id?}")]
         public ViewResult Details(int? id)
         {
 
@@ -49,6 +54,26 @@ namespace BookListMVC.Controllers
                 PageTitle = "User Details"
             };
             return View(userDetailsViewModel);
+        }
+
+        // returns page with the form
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        //get invoked by the form
+        [HttpPost]
+        public IActionResult Create(User user)
+        {
+            // it is valid if all required fields (defined in Model) auch filled
+            if(ModelState.IsValid)
+            {
+                User userNew = _userRepository.Add(user);
+                //return RedirectToAction("details", new { id = userNew.Id });
+            }
+                return View();
         }
     }
 }

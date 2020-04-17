@@ -418,3 +418,4 @@ C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Books\Upsert.cshtml.g.cs
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Details.cshtml.g.cs
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\User\Create.cshtml.g.cs

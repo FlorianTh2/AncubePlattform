@@ -4,6 +4,13 @@ To work with the "right" cli commands one has to
 	- open "Developer Powershell for VS2019"
 	- navigate to the right project folder
 
+
+
+// Get help
+Get-Help about_entityframeworkcore
+
+
+
 // run the project
 dotnet run
 
