@@ -9,6 +9,7 @@
 
 @{
     ViewBag.Title = "User Details";
+    var photoPath = "~/Images/" + (Model.User.PhotoPath ?? "noimage.png");
 }
 
 
@@ -41,6 +42,11 @@
     </div>*@
 
 <h3>@Model.PageTitle</h3>
+
+<div class="container">
+    <img class="card-img-top" src="@photoPath" asp-append-version="true"/>
+</div>
+
 <div>
     Name: @Model.User.Name
 </div>
@@ -53,7 +59,7 @@
 
 <div class="card-footer text-center">
     <a asp-controller="user" asp-action="index" class="btn btn-primary">Back</a>
-    <a asp-controller="user" asp-action="" class="btn btn-primary">Edit</a>
-    <a asp-controller="user" asp-action="" class="btn btn-danger">Delete</a>
+    <a asp-controller="user" asp-action="edit" asp-route-id="@Model.User.Id" class="btn btn-primary">Edit</a>
+    <a asp-controller="user" asp-action="delete" asp-route-id="@Model.User.Id" class="btn btn-danger">Delete</a>
 
 </div>

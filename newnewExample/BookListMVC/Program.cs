@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog.Web;
 
 namespace BookListMVC
 {
@@ -21,8 +22,15 @@ namespace BookListMVC
         }
 
         //
-        public static IHostBuilder CreateHostBuilder(string[] args) =>  Host.CreateDefaultBuilder(args) // creates Host-builder object
-                                                                            // with defaults
-                                                                            .ConfigureWebHostDefaults(webBuilder => {webBuilder.UseStartup<Startup>();});
+        public static IHostBuilder CreateHostBuilder(string[] args) =>  Host
+            .CreateDefaultBuilder(args) // creates Host-builder object
+            // with defaults
+            .ConfigureWebHostDefaults(webBuilder => {webBuilder.UseStartup<Startup>();})
+            .ConfigureLogging(logging =>
+            {
+                logging.ClearProviders();
+                logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+            })
+            .UseNLog();  // NLog: Setup NLog for Dependency injection
     }
 }

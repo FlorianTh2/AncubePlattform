@@ -28,8 +28,6 @@ C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Test
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cors.dll
-C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -108,8 +106,6 @@ C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Test
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Http.dll
-C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Core.dll
-C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Localization.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\refs\Microsoft.Extensions.Logging.Configuration.dll
@@ -477,3 +473,12 @@ C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Test
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\obj\Debug\netcoreapp3.1\BookListMVC.Tests.dll
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\obj\Debug\netcoreapp3.1\BookListMVC.Tests.pdb
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\obj\Debug\netcoreapp3.1\BookListMVC.Tests.genruntimeconfig.cache
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\nlog.config
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\NLog.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC.Tests\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll

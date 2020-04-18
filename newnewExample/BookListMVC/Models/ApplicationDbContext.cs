@@ -1,4 +1,5 @@
 ﻿using BookListMVC.Extensions;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace BookListMVC.Models
 {
-    public class ApplicationDbContext: DbContext
+
+    // since we want to use identity we have to inherit from IdentityDbContext
+    // public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public DbSet<Book> Books { get; set; }
 
@@ -22,6 +26,9 @@ namespace BookListMVC.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // needed after adding identity since where was no migration allowed for now
+            // error with some keys idk
+            base.OnModelCreating(modelBuilder);
             modelBuilder.SeedBooks();
             modelBuilder.SeedUsers();
         }

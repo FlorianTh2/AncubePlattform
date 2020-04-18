@@ -103,8 +103,14 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
 
+    @* 
+        if scripts are defined: load these scripts
+    *@
 
+    @if (IsSectionDefined("Scripts"))
+    {
+        @RenderSection("Scripts", required: true)
 
-    @RenderSection("Scripts", required: false)
+    }
 </body>
 </html>

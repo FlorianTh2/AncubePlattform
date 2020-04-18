@@ -17,6 +17,8 @@
     <div class="card-deck">
         @foreach (var user in Model)
         {
+            var photoPath = "~/Images/" + (user.PhotoPath ?? "noimage.png");
+
             <div class="card m-3">
                 <div class="card-header">
                     <h3>@user.Name</h3>
@@ -31,7 +33,7 @@
                 with that
                 *@
 
-                <img class="card-img-top" src="~/images/noimage.png" asp-append-version="true" />
+                <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true" />
                 <div class="card-footer text-center">
                     @* asp-route-id: the -id is because we want to specify the id property, if we want to get any other property we have to -Property *@
                     <a asp-controller="user" asp-action="details" asp-route-id="@user.Id" class="btn btn-primary m-1">View</a>

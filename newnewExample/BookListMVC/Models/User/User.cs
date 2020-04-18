@@ -26,5 +26,7 @@ namespace BookListMVC.Models.User
         [EmailAddress(ErrorMessage = "Invalid Email Format2")]
         public string Email { get; set; }
 
+        public string PhotoPath { get; set; }
+
     }
 }

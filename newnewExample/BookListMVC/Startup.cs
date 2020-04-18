@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,10 @@ namespace BookListMVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                // to make entityFramework function with identity
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // 3 types: AddSingleton - AddTransient - AddScoped
             // Singleton=1 instance per application start -> whole applicaton livetime
@@ -75,11 +80,21 @@ namespace BookListMVC
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
+
+                // UseStatusCodePagesWithRedirects
+                // UseStatusCodePagesWithReExcecute does same out of user-view
+                // internel WithRedirects sends alters the given url to Error/Code inside the
+                // http-pipeline = no re-executing of the pipeline and navigation to error page
+                // with reExcute (better) the http-pipeline gets executed again with error-url since the start
+                // (= no altering)
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                app.UseExceptionHandler("/Error");
+
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -140,6 +155,7 @@ namespace BookListMVC
 
             app.UseRouting();
 
+            // for identity-Framework
             //// attempts to authenticate the user before they're allowed access to secure resources
             app.UseAuthentication();
 

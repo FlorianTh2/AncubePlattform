@@ -25,3 +25,8 @@ add-migration AddBookToDb					// package manager console
 dotnet ef database update
 update-database								// package manager console
 
+
+// remove migration code file
+// (if migration already applied to db you need to update-database to one of the updated before)
+Remove-Migration
+
