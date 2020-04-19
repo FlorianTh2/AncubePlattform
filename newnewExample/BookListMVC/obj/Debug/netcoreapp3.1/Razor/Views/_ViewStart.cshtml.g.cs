@@ -35,13 +35,27 @@ using BookListMVC.ViewModels.UserController;
 #nullable disable
 #nullable restore
 #line 14 "C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\Views\_ViewImports.cshtml"
+using BookListMVC.ViewModels.UserController.identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\Views\_ViewImports.cshtml"
 using BookListMVC.Models.User;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"460d8b95aec4b0e409255b04d6934fee30b380e0", @"/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ab10a0d54cb6fd2b3a0972b254be94c69a318859", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"65471e6777334110466d64bf60a1651a79b0b32c", @"/Views/_ViewImports.cshtml")]
     public class Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

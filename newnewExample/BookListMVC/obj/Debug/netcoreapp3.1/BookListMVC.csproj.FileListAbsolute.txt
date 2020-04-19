@@ -427,3 +427,4 @@ C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\bin\
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\BookListMVC.csproj.CoreCompileInputs.cache
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\BookListMVC.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\BookListMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs

@@ -35,13 +35,27 @@ using BookListMVC.ViewModels.UserController;
 #nullable disable
 #nullable restore
 #line 14 "C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\Views\_ViewImports.cshtml"
+using BookListMVC.ViewModels.UserController.identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\Views\_ViewImports.cshtml"
 using BookListMVC.Models.User;
 
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 16 "C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"eb4b75170c9dcb66b74114d72c3ebe743d1d53ad", @"/Views/Shared/NotFound.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ab10a0d54cb6fd2b3a0972b254be94c69a318859", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"65471e6777334110466d64bf60a1651a79b0b32c", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_NotFound : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -104,7 +118,7 @@ Write(ViewBag.QS);
 #line hidden
 #nullable disable
             WriteLiteral("</h1>\r\n\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb4b75170c9dcb66b74114d72c3ebe743d1d53ad5233", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eb4b75170c9dcb66b74114d72c3ebe743d1d53ad5692", async() => {
                 WriteLiteral("\r\n    Click here to navigate to the home page\r\n");
             }
             );

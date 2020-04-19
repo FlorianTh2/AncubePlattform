@@ -31,14 +31,37 @@ namespace BookListMVC
 
 
 
-        // configure services for my application
+        // Die Methode ConfigureServices bereitet Klassen und Objekte vor,
+        // die der Dependency-Injection-Mechanismus von ASP.NET 5 bereitstellt.
+        // Diese Klassen / Objekte, also die Injections werden als Services bezeichnet.
+        // hier wird also UNTER ANDEREM die Klasse spezifiziert, die später injected werden soll
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+
+            // 1. AddIdentity registriert die Services für ASP.NET Identity beim Dependency-Injection-Mechanismus von ASP.NET
+            // 2. AddIdentity adds in general the repository (a wrapper for the injected database) to the application
+            // 3. Adds Authentication
+            //      - Identity uses CookieAuthenticationMiddleware per default (https://entwickler.de/online/asp-net-identity-159813.html)
+            //      - (Session- ) Token wird bei User bei erfolgreicher Anmeldung hinterlegt
+            // 4. ...
             services.AddIdentity<IdentityUser, IdentityRole>()
                 // to make entityFramework function with identity
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 10;
+                options.Password.RequiredUniqueChars = 3;
+
+                //options.User.RequireUniqueEmail = true;
+                //options.Lockout.MaxFailedAccessAttempts = 3;
+                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                //options.SignIn.RequireConfirmedEmail = true;
+                // ...
+            });
 
             // 3 types: AddSingleton - AddTransient - AddScoped
             // Singleton=1 instance per application start -> whole applicaton livetime
@@ -80,7 +103,7 @@ namespace BookListMVC
         {
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
 
                 // UseStatusCodePagesWithRedirects
                 // UseStatusCodePagesWithReExcecute does same out of user-view
@@ -88,7 +111,7 @@ namespace BookListMVC
                 // http-pipeline = no re-executing of the pipeline and navigation to error page
                 // with reExcute (better) the http-pipeline gets executed again with error-url since the start
                 // (= no altering)
-                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+                //app.UseStatusCodePagesWithReExecute("/Error/{0}");
             }
             else
             {

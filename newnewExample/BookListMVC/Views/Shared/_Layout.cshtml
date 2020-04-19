@@ -4,6 +4,8 @@
     other file in the given postition will override this code here
 *@
 
+@inject SignInManager<IdentityUser> signInManager
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -75,6 +77,45 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User Index</a>
                         </li>
+                        @*
+                            - SignInManager stützt sich auf den HttpContext, der hierzu Methoden anbietet.
+                            - User is a property of razorpage like ViewBag und damit ein property des HTTPContextes. Über diesen kann auf User zugegriffen werden
+                            - since identity uses cookie authentication per default the http context loads while construction of this http context the cookie
+                                and this cookie stores an hash-id, so the http context can put this cookie in the underlying (session-) dictionary and get the 
+                                information stored there like Name, or something like that.
+                                - that is where the User-object gets his data from
+
+                        *@
+
+                        @*
+                            Authentication = i am logged in? = login + password (who you are)
+                            Authorization = permissions (what you are allowed to do)
+                        *@
+
+                        @* if(User.Identity.IsAuthenticated)*@
+                        @if (signInManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                            @*
+                                    form used as button since we want a post request
+                            *@
+                            <form method="post" asp-action="logout" asp-controller="account">
+                                <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
+                                    Logout @User.Identity.Name
+                                </button>
+                            </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark ml-auto" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark ml-auto" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>
