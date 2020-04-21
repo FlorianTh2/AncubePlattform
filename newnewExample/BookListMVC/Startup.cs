@@ -35,6 +35,8 @@ namespace BookListMVC
         // die der Dependency-Injection-Mechanismus von ASP.NET 5 bereitstellt.
         // Diese Klassen / Objekte, also die Injections werden als Services bezeichnet.
         // hier wird also UNTER ANDEREM die Klasse spezifiziert, die später injected werden soll
+
+        // Dependency injected kann / wird in jeden Controller, View oder andere custom Klasse
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -47,9 +49,16 @@ namespace BookListMVC
             //      - Identity uses CookieAuthenticationMiddleware per default (https://entwickler.de/online/asp-net-identity-159813.html)
             //      - (Session- ) Token wird bei User bei erfolgreicher Anmeldung hinterlegt
             // 4. ...
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 // to make entityFramework function with identity
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddDataProtection();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.Name = "MyCookie";
+            });
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -182,7 +191,14 @@ namespace BookListMVC
             //// attempts to authenticate the user before they're allowed access to secure resources
             app.UseAuthentication();
 
-            ////authorizes a user to access secure resources.
+            // needed to use [Authorize] Attribute, otherwise error
+            //      - redirects automaticly to loginpage and offers "returnUrl" as queryParameter
+            //      - this query parameter can be used (if one implements that into login action) or not, if not it will redict to default page (here home/index)
+            // 4 types of authorization in asp.net core
+            //      1. checks if authenticated (default if no other is used)
+            //      2. role based
+            //      3. claims based
+            //      4. policy based
             app.UseAuthorization();
 
 

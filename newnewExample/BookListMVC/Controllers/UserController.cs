@@ -5,12 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using BookListMVC.Models.User;
 using BookListMVC.ViewModels.UserController;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookListMVC.Controllers
 {
     [Route("[controller]/[action]")]
+    // if we are not logged in, we get redirected to login page out of the page just by this attribute alone
+    // we use that at controller-level (at action-level also possible)
+    //  -> all actions needs authorization and that mean here (at least for now since we have no roles) only authentification (=login)
+    //  -> if we want single actions to be accessible -> [AllowAnonymous]
+    [Authorize]
     public class UserController : Controller
     {
         private readonly IUserRepository _userRepository;
@@ -28,6 +34,7 @@ namespace BookListMVC.Controllers
         // specify default route in this controller (below)
         [Route("~/User")]
         // ~/ ignores controller route
+        [AllowAnonymous]
         public ViewResult Index()
         {
             var viewModel = _userRepository.GetAllUsers();
