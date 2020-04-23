@@ -17,7 +17,9 @@ namespace BookListMVC.Controllers
         {
             this.logger = logger;
         }
+
         [Route("Error/{statusCode}")]
+        [AllowAnonymous]
         public IActionResult HttpStatusCodeHandler(int statusCode)
         {
 
@@ -50,7 +52,7 @@ namespace BookListMVC.Controllers
 
             ViewBag.ExceptionPath = exceptionDetails.Path;
             ViewBag.ExceptionMessage = exceptionDetails.Error.Message;
-            ViewBag.Stacktrace = exceptionDetails.Error.StackTrace;
+            ViewBag.Stacktrace = exceptionDetails.Error.StackTrace.ToString();
             return View("Error");
         }
     }

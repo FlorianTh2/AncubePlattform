@@ -17,6 +17,9 @@ using Microsoft.Extensions.Logging;
 
 namespace BookListMVC
 {
+    //Admin user: a@gmail.com
+    //            Yxcvbnm1**
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -53,11 +56,61 @@ namespace BookListMVC
                 // to make entityFramework function with identity
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
+            // to get claims-based authorization
+            // 1. create claims
+            // 2. create claims policy (is done here), = to bind a claim (here Delete Role) to
+            //      a policy name (here DeleteRolePolicy)
+            //      this policy name can be called later in controller
+            // 3. Use the policy on a controller or a controller action
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy",
+                    policy => policy.RequireClaim("Delete Role"));
+                //                  .RequireClaim("Create Role")
+
+                // identity stores claims as key-value pairs
+                // with the following we just set value of key to value of key
+                // since we dont define proper value
+                // this was possible in our code since we only checked if a user
+                // had a given claim and not which value was stored under this claim key
+                //options.AddPolicy("EditRolePolicy",
+                //    policy => policy.RequireClaim("Edit Role"));
+
+                // define limitation so that only a user
+                //  - with the claim "Edit Role" AND
+                //  - with the value true under this claim
+                // gets authorized
+                //
+                //options.AddPolicy("EditRolePolicy",
+                //    policy => policy.RequireClaim("Edit Role", "true"));
+                //
+                // we want to have a "Super Admin" - Role which has always access
+                // so we need RequireAssertion - function to "create custom authorization policy"
+                // this super admin role has to be created in the app
+                options.AddPolicy("EditRolePolicy",
+                    policy => policy.RequireAssertion(context =>
+                    context.User.IsInRole("Admin")
+                    &&
+                    context.User.HasClaim(claim => claim.Type == "Edit Role" && claim.Value == "true")
+                    ||
+                    context.User.IsInRole("Super Admin")
+                    ));
+
+                options.AddPolicy("AdminRolePolicy",
+                    policy => policy.RequireRole("Admin"));
+
+            });
+
+
+            // included to experimentally try to decode a cookie (to get the one class injected)
             services.AddDataProtection();
 
             services.ConfigureApplicationCookie(options =>
             {
                 options.Cookie.Name = "MyCookie";
+                // default: /Account/AccessDenied
+                options.AccessDeniedPath = new PathString("Administration/AccessDenied");
             });
 
             services.Configure<IdentityOptions>(options =>
@@ -112,7 +165,7 @@ namespace BookListMVC
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
 
                 // UseStatusCodePagesWithRedirects
                 // UseStatusCodePagesWithReExcecute does same out of user-view
@@ -120,12 +173,19 @@ namespace BookListMVC
                 // http-pipeline = no re-executing of the pipeline and navigation to error page
                 // with reExcute (better) the http-pipeline gets executed again with error-url since the start
                 // (= no altering)
-                //app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+                // e.g. if route not found
+                app.UseStatusCodePagesWithReExecute("/Error/{0}");
+
+                //global exception handling
+                // redirects to error controller if error occurs
+                app.UseExceptionHandler("/Error");
+
             }
             else
             {
                 app.UseStatusCodePagesWithReExecute("/Error/{0}");
-                app.UseExceptionHandler("/Error");
+                //app.UseExceptionHandler("/Error");
 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
@@ -195,7 +255,7 @@ namespace BookListMVC
             //      - redirects automaticly to loginpage and offers "returnUrl" as queryParameter
             //      - this query parameter can be used (if one implements that into login action) or not, if not it will redict to default page (here home/index)
             // 4 types of authorization in asp.net core
-            //      1. checks if authenticated (default if no other is used)
+            //      1. called "simple authorization": checks if authenticated (default if no other is used)
             //      2. role based
             //      3. claims based
             //      4. policy based

@@ -40,6 +40,24 @@ namespace BookListMVC.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedBooks();
             modelBuilder.SeedUsers();
+
+
+            // claims=properties
+            //principal=object das claims hat
+            foreach (var foreignKey in modelBuilder.Model.GetEntityTypes()
+                .SelectMany(a=>a.GetForeignKeys()))
+            {
+                // default=cascade=if role is deleted the users in that role are also deleted
+                // we set it to restricted=if role deleted, no action in database ->
+                //      but when we get integrity problem in database since foreignkey are there
+                //          because of that we ll get an exception if we try to delete a role now
+                //              because of that we need a view to tell user: if u want to
+                //              delete that role you need to remove all users from this role
+                // this is database defined -> we need to migrate+update database
+                foreignKey.DeleteBehavior = DeleteBehavior.Restrict;
+            }
+
+
         }
     }
 }

@@ -430,3 +430,10 @@ C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\CreateRole.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditRole.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditUsersInRole.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ListRoles.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccessDenied.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\EditUser.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ListUsers.cshtml.g.cs
+C:\Users\s0558_000\Desktop\github\AncubePlattform\newnewExample\BookListMVC\obj\Debug\netcoreapp3.1\Razor\Views\Administration\ManageUserRoles.cshtml.g.cs

@@ -18,19 +18,35 @@
         environment tag helper
     *@
 
-    <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    </environment>
-    <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-              crossorigin="anonymous"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only"
-              asp-fallback-test-property="position"
-              asp-fallback-test-value="absolute"
-              asp-suppress-fallback-integrity="true">
-    </environment>
+<environment include="Development">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</environment>
+<environment exclude="Development">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous"
+          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-fallback-test-class="sr-only"
+          asp-fallback-test-property="position"
+          asp-fallback-test-value="absolute"
+          asp-suppress-fallback-integrity="true">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</environment>
 
 
 
@@ -77,19 +93,34 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Index">User Index</a>
                         </li>
+                        @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manage
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Administration"
+                                       asp-action="ListUsers">Users</a>
+                                    <a class="dropdown-item" asp-controller="Administration"
+                                       asp-action="ListRoles">Roles</a>
+                                </div>
+                            </li>
+                        }
                         @*
-                            - SignInManager stützt sich auf den HttpContext, der hierzu Methoden anbietet.
-                            - User is a property of razorpage like ViewBag und damit ein property des HTTPContextes. Über diesen kann auf User zugegriffen werden
-                            - since identity uses cookie authentication per default the http context loads while construction of this http context the cookie
-                                and this cookie stores an hash-id, so the http context can put this cookie in the underlying (session-) dictionary and get the
-                                information stored there like Name, or something like that.
-                                - that is where the User-object gets his data from
+        - SignInManager stützt sich auf den HttpContext, der hierzu Methoden anbietet.
+        - User is a property of razorpage like ViewBag und damit ein property des HTTPContextes. Über diesen kann auf User zugegriffen werden
+        - since identity uses cookie authentication per default the http context loads while construction of this http context the cookie
+            and this cookie stores an hash-id, so the http context can put this cookie in the underlying (session-) dictionary and get the
+            information stored there like Name, or something like that.
+            - that is where the User-object gets his data from
 
                         *@
 
                         @*
-                            Authentication = i am logged in? = login + password (who you are)
-                            Authorization = permissions (what you are allowed to do)
+        Authentication = i am logged in? = login + password (who you are)
+        Authorization = permissions (what you are allowed to do)
                         *@
 
                         @* if(User.Identity.IsAuthenticated)*@
@@ -97,7 +128,7 @@
                         {
                             <li class="nav-item">
                                 @*
-                                    form used as button since we want a post request
+                form used as button since we want a post request
                                 *@
                                 <form method="post" asp-action="logout" asp-controller="account">
                                     <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
@@ -132,12 +163,7 @@
             &copy; 2020 - BookListMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
 
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
 
 

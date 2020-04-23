@@ -81,6 +81,13 @@ namespace BookListMVC.Controllers
 
                 if (result.Succeeded)
                 {
+
+                    // otherwise if we create user as Admin we will login as this user instantly
+                    if(signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        return RedirectToAction("ListUsers", "Administration");
+                    }
+
                     // persistent asks if the user should be logged in even if he closed the browser
                     await signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("index", "home");
@@ -129,6 +136,7 @@ namespace BookListMVC.Controllers
             }
             return View(model);
         }
+
 
 
 
