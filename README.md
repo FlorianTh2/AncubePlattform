@@ -1,15 +1,17 @@
 # AncubePlattform
 Webapp build with asp.net core 2 and angular 6.
 
-## Learned [personal]
---
+## Learned
+- insights into asp.net core 2
+- angular 6
 ## Prerequisites
---
+- dotnet-cli
+- ng
 ## Setup
---
-## TL;DR
---
-## Build with
---
-## Acknowledgements
---
+- Backend:
+
+`$ dotnet run`
+
+- Frontend:
+
+`$ ng serve --open`
